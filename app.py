@@ -39,10 +39,7 @@ def contact():
         cur.execute('''INSERT INTO newcontact(name,number) VALUES(?,?)''',(name,num))
         conn.commit()
         conn.close()
-        admin(
-
-
-        )
+        admin()
     return render_template("contact.html")
 
 @app.route("/feedback")
@@ -54,5 +51,4 @@ def feedback():
 if __name__ == "__main__":
     create_connection()
     create_table()
-    send_otp()
     app.run(debug=True)
