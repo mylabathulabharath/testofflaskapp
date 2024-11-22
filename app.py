@@ -1,15 +1,7 @@
 from flask import Flask, render_template,request, redirect
 import sqlite3
-from twilio.rest import Client
 import random
 app = Flask(__name__)
-
-
-ACCOUNT_SID = 'AC835b5e3669038ca50a97fd1265bf823c'
-AUTH_TOKEN = '1e42eb7c187dbb938866251d0fa378e6'
-TWILIO_PHONE = '+12029725129'
-
-client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 
 def create_connection():
@@ -56,15 +48,6 @@ def contact():
 @app.route("/feedback")
 def feedback():
     return render_template("feedback.html")
-
-def send_otp():
-  
-    phone_number = "+919381666049"
-    
-    otp = random.randint(100000, 999999)
-
-        # Send OTP via Twilio
-    message = client.messages.create(body=f"Your OTP is: {otp}",from_=TWILIO_PHONE,to=phone_number)
 
 
 
